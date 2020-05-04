@@ -1,35 +1,40 @@
-def merge(a,b):
-    (m,n,c) = (len(a),len(b),[])
-    (i,j) = (0,0)
-    
-    while i+j < m+n:
-        if i >= m:
-            c.append(b[j])
-            j = j+1
-        elif j >= n:
-            c.append(a[i])
-            i = i + 1
-        elif a[i] >= b[j]:
-            c.append(b[j])
-            j = j+ 1
-        elif b[j] > a[i]:
-            c.append(a[i])
-            i = i+1
-    
-#    print(c)
-    return c
+def mergeList(leftList,rightList):
+    leftListLen = len(leftList) 
+    rightListLen = len(rightList)
+    combinedList = []
+    (l,r) = (0,0)
 
+    while ( l < leftListLen and r < rightListLen ):
+        if leftList[l] > rightList[r]:
+            combinedList.append(rightList[r])
+            r += 1
+        else:
+            combinedList.append(leftList[l])
+            l += 1
+    
+    while( l < leftListLen ):
+        combinedList.append(leftList[l])
+        l += 1
+    
+    while ( r < rightListLen ):
+        combinedList.append(rightList[r])
+        r += 1
+
+    return combinedList
 
 def mergesort(a,left,right):
-    if right - left <= 1:
+    if right - left <= 1:  # Split into left and right list continously until size is 1
         return a[left:right]
     else:
         mid = (left+right)//2
         
-        L = mergesort(a,left,mid)
+        L = mergesort(a,left,mid)   
         R = mergesort(a,mid,right)
-        return (merge(L,R))
-        
+        a = mergeList(L,R) # Keep Merging left and right list and move up the tree
+        return a
 
-x = [10,12,4,1,55,7,24,68,2,46,11,32,19,0,1,232,45]
-print ( mergesort(x,0,len(x)) )
+x = [1,2,4,6,3,5,7,8]
+y = mergesort(x,0,len(x))
+print(y)
+
+

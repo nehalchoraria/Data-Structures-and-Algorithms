@@ -1,3 +1,5 @@
+# Complexity - O(n^2)
+
 def insertionsort(arr):
 	for rightindex in range(len(arr)):     #For every element in array
 		checkpoint = rightindex       		# keep comparing with previous elements until element behind is 
