@@ -1,11 +1,15 @@
 # Complexity - O(n^2)
 
 def insertionsort(arr):
-	for rightindex in range(len(arr)):     #For every element in array
-		checkpoint = rightindex       		# keep comparing with previous elements until element behind is 
-		while checkpoint>0 and arr[checkpoint] < arr[checkpoint - 1]:	# smaller and keep swapping
-			(arr[checkpoint],arr[checkpoint-1]) = (arr[checkpoint-1],arr[checkpoint])
-			checkpoint = checkpoint - 1
+	for index,value in enumerate(arr):
+		j = index - 1
+		while ( j > 0 ):
+			if arr[j] >= arr[j+1]:
+				arr[j],arr[j+1] = arr[j+1],arr[j]
+			else:
+				break
+			j = j - 1
+	
 	print(arr)
-
-insertionsort(list(range(500,0,-1)))
+			
+insertionsort([3,66,32,45,98,33,35,359,10])
