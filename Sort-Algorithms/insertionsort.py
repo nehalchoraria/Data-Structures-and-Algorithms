@@ -1,15 +1,14 @@
 # Complexity - O(n^2)
+# Take every element and put it the correct position of left sorted array
 
-def insertionsort(arr):
-	for index,value in enumerate(arr):
-		j = index - 1
-		while ( j > 0 ):
-			if arr[j] >= arr[j+1]:
-				arr[j],arr[j+1] = arr[j+1],arr[j]
-			else:
-				break
-			j = j - 1
+def insertionSort(array) -> list:
+	arraySize = len(array)
+	for index in range(2,arraySize): # First element is already sorted
+		prevIndex = index - 1 # Sorting from last element till 0
+		while prevIndex > 0 and array[prevIndex] >= array[prevIndex+1]:
+			array[prevIndex+1],array[prevIndex] = array[prevIndex],array[prevIndex+1]
+			prevIndex = prevIndex - 1
+	return array
 	
-	print(arr)
-			
-insertionsort([3,66,32,45,98,33,35,359,10])
+array = [3,66,32,45,98,33,35,359,10]		
+print( insertionSort(array) )

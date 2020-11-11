@@ -1,13 +1,13 @@
 # Complexity O(nlogn)
 
 def partitionLogic(array,start,end):
-    partitonIndex = start
+    lowerIndex = start
     for i in range(start,end):
         if array[i] < array[end]: #end is pivot
-            array[i],array[partitonIndex] = array[partitonIndex],array[i]
-            partitonIndex += 1
-    array[partitonIndex],array[end] = array[end],array[partitonIndex]
-    return partitonIndex 
+            array[i],array[lowerIndex] = array[lowerIndex],array[i]
+            lowerIndex += 1
+    array[lowerIndex],array[end] = array[end],array[lowerIndex] #Last element is set to correct position
+    return lowerIndex 
 
 def quickSort(array,start,end):
     if start < end:

@@ -33,7 +33,7 @@ def mergesort(a,left,right):
         a = mergeList(L,R) # Keep Merging left and right list and move up the tree
         return a
 
-x = [1,2,4,6,3,5,7,8]
+x = [9,4,5,6,2,4,5,6,7,2,2,2,3,5,6,7,8]
 y = mergesort(x,0,len(x))
 print(y)
 
