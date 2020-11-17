@@ -13,7 +13,7 @@ def buildKnapsack(array,availableWeight):
         else:
             break
  
-    if availableWeight > 0:
+    if availableWeight > 0:  #fractional part
         profitEarned = profitEarned + ( array[index][0] * availableWeight ) /array[index][1]
     return format(profitEarned)
 
